@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div>
+        <h1>Edit Post</h1>
+        <form action="/save" method="post">
+            <label for="Header">Header</label>
+            <input type="text" name="header" value="<%= data.heading %>" required><br>
+            <label for="body">Body</label>
+            <textarea name="body" rows="10" required><%= data.body %></textarea><br>
+            <label for="author">Author</label>
+            <input type="text" name="author" value="<%= data.author %>" required><br>
+            <input type="hidden" name="id" value="<%= data.id %>">
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div>
+        <h1>Welcome to my blog</h1>
+        <form action="/new" method="post">
+            <input type="submit" value="New Post">
+        </form>
+        <% if (data && data.length > 0) { %>
+            <% data.forEach(element => { %>
+                <div class="post-container">
+                    <h3><%= element.heading %></h3>
+                    <p><%= element.body %></p>
+                    <footer>Author: <%= element.author %></footer><br><br>
+                    <form action="/edit" method="post">
+                        <input type="hidden" name="id" value="<%= element.id %>">
+                        <input type="submit" value="Edit">
+                    </form>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="id" value="<%= element.id %>">
+                        <input type="submit" value="Delete">
+                    </form>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No Posts To Show.</p>
+        <% } %>    
+    </div>
+</body>
+</html>
